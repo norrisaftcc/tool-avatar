@@ -1,0 +1,152 @@
+<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients for depth -->
+    <radialGradient id="bodyGradient" cx="40%" cy="30%" r="60%">
+      <stop offset="0%" style="stop-color:#f5f5f5;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#e0e0e0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#bdbdbd;stop-opacity:1" />
+    </radialGradient>
+    
+    <radialGradient id="fluffGradient" cx="30%" cy="20%" r="70%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#f0f0f0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d0d0d0;stop-opacity:1" />
+    </radialGradient>
+    
+    <linearGradient id="earGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f8f8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d5d5d5;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Shadow filter -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#999" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background circle for positioning reference -->
+  <circle cx="200" cy="250" r="180" fill="none" stroke="#eee" stroke-width="1" stroke-dasharray="5,5" opacity="0.3"/>
+  
+  <!-- BODY LAYER - Main torso (can scale/breathe) -->
+  <g id="body">
+    <ellipse cx="200" cy="320" rx="80" ry="100" fill="url(#bodyGradient)" filter="url(#shadow)"/>
+    <!-- Body fluff patches -->
+    <circle cx="160" cy="280" r="25" fill="url(#fluffGradient)" opacity="0.8"/>
+    <circle cx="240" cy="295" r="20" fill="url(#fluffGradient)" opacity="0.7"/>
+    <circle cx="200" cy="370" r="18" fill="url(#fluffGradient)" opacity="0.6"/>
+  </g>
+  
+  <!-- NECK LAYER - Can stretch/compress -->
+  <g id="neck">
+    <ellipse cx="200" cy="220" rx="25" ry="60" fill="url(#bodyGradient)" filter="url(#shadow)"/>
+    <!-- Neck fluff -->
+    <ellipse cx="185" cy="200" rx="20" ry="35" fill="url(#fluffGradient)" opacity="0.7"/>
+  </g>
+  
+  <!-- HEAD BASE LAYER - Main head shape (can tilt/nod) -->
+  <g id="head_base">
+    <ellipse cx="200" cy="140" rx="45" ry="55" fill="url(#bodyGradient)" filter="url(#shadow)"/>
+    <!-- Cheek fluff -->
+    <circle cx="165" cy="155" r="18" fill="url(#fluffGradient)" opacity="0.8"/>
+    <circle cx="235" cy="155" r="18" fill="url(#fluffGradient)" opacity="0.8"/>
+  </g>
+  
+  <!-- LEFT EAR LAYER - Can flick independently -->
+  <g id="ear_left">
+    <ellipse cx="175" cy="95" rx="12" ry="25" fill="url(#earGradient)" filter="url(#shadow)"/>
+    <ellipse cx="175" cy="95" rx="8" ry="20" fill="#f0f0f0"/>
+  </g>
+  
+  <!-- RIGHT EAR LAYER - Can flick independently -->
+  <g id="ear_right">
+    <ellipse cx="225" cy="95" rx="12" ry="25" fill="url(#earGradient)" filter="url(#shadow)"/>
+    <ellipse cx="225" cy="95" rx="8" ry="20" fill="#f0f0f0"/>
+  </g>
+  
+  <!-- SNOUT LAYER - For talking animations -->
+  <g id="snout">
+    <ellipse cx="200" cy="170" rx="20" ry="15" fill="url(#bodyGradient)"/>
+    <!-- Nostrils -->
+    <ellipse cx="195" cy="165" rx="2" ry="3" fill="#666"/>
+    <ellipse cx="205" cy="165" rx="2" ry="3" fill="#666"/>
+  </g>
+  
+  <!-- FACIAL EXPRESSION VARIANTS - Additional mouth shapes for phonemes -->
+  <g id="mouth_neutral">
+    <path d="M 185 180 Q 200 190 215 180" stroke="#999" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="mouth_open" opacity="0">
+    <ellipse cx="200" cy="185" rx="8" ry="12" fill="#2d2d2d"/>
+    <path d="M 185 175 Q 200 185 215 175" stroke="#999" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="mouth_smile" opacity="0">
+    <path d="M 185 180 Q 200 175 215 180" stroke="#999" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="mouth_surprised" opacity="0">
+    <ellipse cx="200" cy="185" rx="6" ry="10" fill="#2d2d2d"/>
+  </g>
+  
+  <!-- LEFT EYE LAYER - For blinking/eye movement -->
+  <g id="eye_left">
+    <!-- Eye socket -->
+    <ellipse cx="185" cy="135" rx="12" ry="15" fill="white"/>
+    <!-- Iris -->
+    <circle cx="185" cy="135" r="8" fill="#4a4a4a"/>
+    <!-- Pupil -->
+    <circle cx="185" cy="135" r="4" fill="#000"/>
+    <!-- Highlight -->
+    <circle cx="183" cy="132" r="2" fill="white" opacity="0.9"/>
+  </g>
+  
+  <!-- RIGHT EYE LAYER - For blinking/eye movement -->
+  <g id="eye_right">
+    <!-- Eye socket -->
+    <ellipse cx="215" cy="135" rx="12" ry="15" fill="white"/>
+    <!-- Iris -->
+    <circle cx="215" cy="135" r="8" fill="#4a4a4a"/>
+    <!-- Pupil -->
+    <circle cx="215" cy="135" r="4" fill="#000"/>
+    <!-- Highlight -->
+    <circle cx="213" cy="132" r="2" fill="white" opacity="0.9"/>
+  </g>
+  
+  <!-- EYELID LAYERS - For blinking animation -->
+  <g id="eyelid_left" opacity="0">
+    <ellipse cx="185" cy="135" rx="12" ry="15" fill="url(#bodyGradient)"/>
+  </g>
+  <g id="eyelid_right" opacity="0">
+    <ellipse cx="215" cy="135" rx="12" ry="15" fill="url(#bodyGradient)"/>
+  </g>
+  
+  <!-- FOREGROUND FLUFF - Can jiggle/bounce -->
+  <g id="fluff_overlay">
+    <circle cx="140" cy="250" r="22" fill="url(#fluffGradient)" opacity="0.6"/>
+    <circle cx="260" cy="270" r="25" fill="url(#fluffGradient)" opacity="0.5"/>
+    <circle cx="200" cy="190" r="15" fill="url(#fluffGradient)" opacity="0.4"/>
+  </g>
+  
+  <!-- DEFORMATION GUIDES - Visible guides for mesh placement -->
+  <g id="deformation_guides" opacity="0.2">
+    <!-- Neck joint circles -->
+    <circle cx="200" cy="190" r="30" fill="none" stroke="red" stroke-width="1" stroke-dasharray="2,2"/>
+    <circle cx="200" cy="260" r="25" fill="none" stroke="red" stroke-width="1" stroke-dasharray="2,2"/>
+    
+    <!-- Head rotation pivot -->
+    <circle cx="200" cy="140" r="5" fill="red"/>
+    <text x="210" y="145" font-family="Arial" font-size="10" fill="red">HEAD_PIVOT</text>
+    
+    <!-- Ear rotation pivots -->
+    <circle cx="175" cy="110" r="3" fill="blue"/>
+    <circle cx="225" cy="110" r="3" fill="blue"/>
+    <text x="140" y="125" font-family="Arial" font-size="8" fill="blue">EAR_L</text>
+    <text x="230" y="125" font-family="Arial" font-size="8" fill="blue">EAR_R</text>
+    
+    <!-- Body breathing center -->
+    <circle cx="200" cy="320" r="3" fill="green"/>
+    <text x="210" y="325" font-family="Arial" font-size="8" fill="green">BREATH</text>
+    
+    <!-- Mesh density indicators -->
+    <rect x="150" y="190" width="100" height="40" fill="none" stroke="orange" stroke-width="1" stroke-dasharray="1,1"/>
+    <text x="155" y="205" font-family="Arial" font-size="8" fill="orange">HIGH_DENSITY</text>
+  </g>
+</svg>
